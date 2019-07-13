@@ -1,4 +1,4 @@
-# binance-sdk
-# npm init 
-# npm i
-# node b.js
+binance-sdk
+npm init 
+npm i
+node b.js
