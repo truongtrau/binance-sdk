@@ -30,12 +30,10 @@ httpClient
   .get(sequenceURL)
   .then((res) => {      
       const sequence = res.data.sequence || 0      
-      console.log('asset')
       console.log(asset)
       return bnbClient.transfer(addressFrom, addressTo, amount, asset, message, sequence)
   })
   .then((result) => {
-      console.log( result);
       if (result.status === 200) { 
         console.log('success', result.result[0].hash);
       } else {
