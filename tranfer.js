@@ -31,6 +31,7 @@ httpClient
   .then((res) => {      
       const sequence = res.data.sequence || 0      
       console.log(asset)
+      console.log(sequence)
       return bnbClient.transfer(addressFrom, addressTo, amount, asset, message, sequence)
   })
   .then((result) => {
