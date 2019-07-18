@@ -2,10 +2,10 @@ const BnbApiClient = require('@binance-chain/javascript-sdk');
 const axios = require('axios');
 
 const asset = 'BNB'; // asset string
-const amount = 0.123; // amount float
+const amount = 0.000123; // amount float
 const addressTo = 'tbnb1v4veuu96hl4ev0vntua4m3anvv758a04ss7z0s'; // addressTo string
 
-const message = 'A note to you'; // memo string
+const message = 'Trường Trần Midas Protocol'; // memo string
 const api = 'https://testnet-dex.binance.org/'; /// api string
 //const addressFrom ="tbnb1czr5w6pjgn6mvfwvysw54fk4hdk5l8vxxyvhtt"
 
@@ -28,13 +28,14 @@ const sequenceURL = `${api}api/v1/account/${addressFrom}/sequence`;
 console.log('sequenceURL: '+ sequenceURL)
 httpClient
   .get(sequenceURL)
-  .then((res) => {
-      console.log('here')
+  .then((res) => {      
       const sequence = res.data.sequence || 0      
+      console.log('asset')
+      console.log(asset)
       return bnbClient.transfer(addressFrom, addressTo, amount, asset, message, sequence)
   })
   .then((result) => {
-      console.log('result: ' + result);
+      console.log( result);
       if (result.status === 200) { 
         console.log('success', result.result[0].hash);
       } else {
