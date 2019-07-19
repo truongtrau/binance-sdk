@@ -5,7 +5,7 @@ const asset = 'BNB'; // asset string
 const amount = 0.000123; // amount float
 const addressTo = 'tbnb1v4veuu96hl4ev0vntua4m3anvv758a04ss7z0s'; // addressTo string
 
-const message = 'Trường Trần Midas Protocol'; // memo string
+const message = ''; // memo string
 const api = 'https://testnet-dex.binance.org/'; /// api string
 //const addressFrom ="tbnb1czr5w6pjgn6mvfwvysw54fk4hdk5l8vxxyvhtt"
 
