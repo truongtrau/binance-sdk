@@ -2,8 +2,9 @@ const BnbApiClient = require('@binance-chain/javascript-sdk');
 const axios = require('axios');
 
 const asset = 'BNB'; // asset string
-const amount = 0.000123; // amount float
-const addressTo = 'tbnb1v4veuu96hl4ev0vntua4m3anvv758a04ss7z0s'; // addressTo string
+//const amount = 0.000123; // amount float
+const amount = 1; // amount float
+const addressTo = 'tbnb18jqzn030a24a53v6zqd6fqmkrk0593wf3jahav'; // addressTo string
 
 const message = ''; // memo string
 const api = 'https://testnet-dex.binance.org/'; /// api string
