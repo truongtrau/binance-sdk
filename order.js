@@ -1,42 +1,28 @@
 const BnbApiClient = require('@binance-chain/javascript-sdk');
 const axios = require('axios');
-
-const asset = 'BNB'; // asset string
-//const amount = 0.000123; // amount float
-const amount = 0.001; // amount float
-const addressTo = 'tbnb18jqzn030a24a53v6zqd6fqmkrk0593wf3jahav'; // addressTo string
-
-const message = ''; // memo string
 const api = 'https://testnet-dex.binance.org/'; /// api string
-//const addressFrom ="tbnb1czr5w6pjgn6mvfwvysw54fk4hdk5l8vxxyvhtt"
-
-let privKey = 'af8c545fd5f3e7f53b37b3c6750dc585ef21e80ac3907b5636fa9af019b36db5'; // privkey hexstring (keep this safe)
-
+let privKey = '14fd0747c04b481c0a18cf1eef698420b8b21ea5355601fe046fff8aa993e667'; // privkey hexstring (keep this safe)
 const bnbClient = new BnbApiClient(api);
-
 const httpClient = axios.create({ baseURL: api });
-
-
 bnbClient.chooseNetwork("testnet"); // or this can be "mainnet"
 bnbClient.setPrivateKey(privKey);
 bnbClient.initChain();
-
 const addressFrom = bnbClient.getClientKeyAddress(); // sender address string (e.g. bnb1...)
 console.log(addressFrom)
-
-//const addressFrom = bnbClient.getClientKeyAddress(); // sender address string (e.g. bnb1...)
 const sequenceURL = `${api}api/v1/account/${addressFrom}/sequence`;
 console.log('sequenceURL: '+ sequenceURL)
 httpClient
   .get(sequenceURL)
   .then((res) => {      
-      const sequence = res.data.sequence || 0      
-      console.log(asset)
-      console.log(sequence)
-      return bnbClient.transfer(addressFrom, addressTo, amount, asset, message, sequence)
+      const sequence = res.data.sequence || 0            
+      let symPair  = "TOMOB-1E1_BNB"
+      let side = 1 // 1 = buy, 2  = sell
+      let price = 1 
+      let quantity   =  5.5 // amount
+      return bnbClient.placeOrder(addressFrom,symPair ,side, price,quantity, sequence, 1)
   })
   .then((result) => {
-      if (result.status === 200) { 
+      if (result.status === 200) {
         console.log('success', result.result[0].hash);
       } else {
         console.error('error', result);
